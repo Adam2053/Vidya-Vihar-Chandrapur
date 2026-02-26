@@ -281,7 +281,7 @@ export function Hero() {
                                     alt="Student"
                                     width={270}
                                     height={340}
-                                    className="w-full h-full object-cover object-top"
+                                    className="w-full h-full object-bottom object-cover object-top"
                                     style={{ objectPosition: "center 15%" }}
                                     priority
                                 />

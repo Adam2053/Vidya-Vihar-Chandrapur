@@ -60,14 +60,14 @@ export function Stats() {
             gsap.from(".empower-stats-pill", {
                 scrollTrigger: {
                     trigger: ".empower-stats-pill",
-                    start: "top 90%",
+                    start: "top 100%",
                     toggleActions: "play none none none",
                 },
                 y: 40,
                 opacity: 0,
                 duration: 0.7,
                 ease: "power3.out",
-                delay: 0.5,
+                delay: 0,
             });
 
             // Curved arrow draw-in
@@ -180,9 +180,9 @@ export function Stats() {
                                     src="/kid-girl-1.png"
                                     alt="Happy student"
                                     fill
-                                    className="object-cover object-bottom scale-[1.2] drop-shadow-2xl"
+                                    className="object-cover object-bottom scale-[1.3] drop-shadow-2xl"
                                     sizes="(max-width: 768px) 250px, 290px"
-                                    style={{transform: "translatey(-35px)", left:"2rem"}}
+                                    style={{ transform: "translatey(-30px)", left: "2rem" }}
                                 />
                             </div>
 
