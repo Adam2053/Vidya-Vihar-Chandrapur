@@ -169,19 +169,20 @@ export function Stats() {
                     </div>
 
                     {/* Right - Kid Image with Accent Shape + Floaters */}
-                    <div className="empower-image-wrapper relative flex justify-center lg:justify-end">
+                    <div className="empower-image-wrapper relative mt-10 lg:mt-0 flex justify-center lg:justify-end">
                         <div className="relative">
                             {/* Blue accent shape behind the kid */}
                             <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[260px] h-[320px] lg:w-[300px] lg:h-[370px] rounded-[2rem] bg-gradient-to-b from-school-cyan/50 to-school-blue/40 dark:from-school-cyan/30 dark:to-school-blue/25 -rotate-3" />
 
-                            {/* Kid image - chest level */}
-                            <div className="relative w-[250px] h-[310px] lg:w-[290px] lg:h-[360px] overflow-hidden rounded-[2rem] z-10">
+                            {/* Kid image - naturally anchored at bottom without clipping content */}
+                            <div className="relative w-[250px] h-[310px] lg:w-[290px] lg:h-[360px] z-10">
                                 <Image
                                     src="/kid-girl-1.png"
                                     alt="Happy student"
                                     fill
-                                    className="object-cover object-top scale-[1.3] translate-y-[5%]"
+                                    className="object-cover object-bottom scale-[1.2] drop-shadow-2xl"
                                     sizes="(max-width: 768px) 250px, 290px"
+                                    style={{transform: "translatey(-35px)", left:"2rem"}}
                                 />
                             </div>
 
