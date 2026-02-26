@@ -1,26 +1,223 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans-var);
+  --font-heading: var(--font-heading-var);
+  --font-mono: var(--font-mono-var);
+
+  /* Shadcn color tokens */
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Custom school palette */
+  --color-school-purple: var(--school-purple);
+  --color-school-cyan: var(--school-cyan);
+  --color-school-maroon: var(--school-maroon);
+  --color-school-gold: var(--school-gold);
+  --color-school-orange: var(--school-orange);
+  --color-school-green: var(--school-green);
+  --color-school-blue: var(--school-blue);
+  --color-school-cream: var(--school-cream);
+
+  /* Radii */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Animations */
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-blob: blob-morph 8s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.6s ease-out forwards;
+  --animate-fade-in: fade-in 0.5s ease-out forwards;
+  --animate-count-up: count-up 2s ease-out forwards;
+  --animate-slide-in-left: slide-in-left 0.6s ease-out forwards;
+  --animate-slide-in-right: slide-in-right 0.6s ease-out forwards;
+  --animate-bounce-gentle: bounce-gentle 2s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 2s ease-in-out infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(1deg); }
+  66% { transform: translateY(6px) rotate(-1deg); }
+}
+
+@keyframes blob-morph {
+  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  25% { border-radius: 60% 40% 30% 70% / 50% 60% 40% 60%; }
+  50% { border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%; }
+  75% { border-radius: 30% 70% 60% 40% / 40% 60% 50% 60%; }
+}
+
+@keyframes fade-up {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slide-in-left {
+  0% { opacity: 0; transform: translateX(-40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-right {
+  0% { opacity: 0; transform: translateX(40px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(251, 192, 45, 0.4); }
+  50% { box-shadow: 0 0 20px 8px rgba(251, 192, 45, 0.15); }
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* Light Mode - Warm cream theme */
+  --background: #FAF7F2;
+  --foreground: #1a1a2e;
+  --card: #ffffff;
+  --card-foreground: #1a1a2e;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a2e;
+  --primary: #3E2762;
+  --primary-foreground: #ffffff;
+  --secondary: #f0ebe3;
+  --secondary-foreground: #3E2762;
+  --muted: #f0ebe3;
+  --muted-foreground: #6b6580;
+  --accent: #A9E1E4;
+  --accent-foreground: #1a1a2e;
+  --destructive: #A62232;
+  --border: #e2ddd5;
+  --input: #e2ddd5;
+  --ring: #3E2762;
+
+  /* School custom colors */
+  --school-purple: #3E2762;
+  --school-cyan: #A9E1E4;
+  --school-maroon: #A62232;
+  --school-gold: #FBC02D;
+  --school-orange: #FF7A45;
+  --school-green: #1E824C;
+  --school-blue: #2980B9;
+  --school-cream: #FAF7F2;
+}
+
+.dark {
+  --background: #0a0a0f;
+  --foreground: #f0ebe3;
+  --card: #141420;
+  --card-foreground: #f0ebe3;
+  --popover: #141420;
+  --popover-foreground: #f0ebe3;
+  --primary: #A9E1E4;
+  --primary-foreground: #0a0a0f;
+  --secondary: #1e1e30;
+  --secondary-foreground: #f0ebe3;
+  --muted: #1e1e30;
+  --muted-foreground: #9a94a8;
+  --accent: #FBC02D;
+  --accent-foreground: #0a0a0f;
+  --destructive: #ff6b7a;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #A9E1E4;
+
+  --school-purple: #9b7bc7;
+  --school-cyan: #A9E1E4;
+  --school-maroon: #ff6b7a;
+  --school-gold: #FBC02D;
+  --school-orange: #FF9B6A;
+  --school-green: #3ED68A;
+  --school-blue: #5DADE2;
+  --school-cream: #1e1e30;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    scroll-behavior: smooth;
   }
 }
 
-body {
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
   background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--school-purple);
+  border-radius: 100px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--school-cyan);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Text gradient utility */
+.text-gradient {
+  background: linear-gradient(135deg, var(--school-purple), var(--school-maroon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .text-gradient {
+  background: linear-gradient(135deg, var(--school-cyan), var(--school-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
